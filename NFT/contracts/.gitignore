@@ -1,0 +1,16 @@
+# Node
+node_modules/
+package-lock.json
+
+# Hardhat
+artifacts/
+cache/
+
+# Env files (CRITICAL)
+.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
