@@ -24,10 +24,10 @@ function App() {
   const init = async () => {
     try {
       await isWalletConnected()
+      await loadNfts()
       console.log('Blockchain Loaded')
 
       // optional
-       await loadNfts()
     } catch (error) {
       console.error(error)
     }
@@ -37,11 +37,11 @@ function App() {
 }, [])
 
   return (
-    <div className="h-screen  bg-gray-900 text-white">
-      <div className="text-3xl mb-4">Web3 Starter 🚀
+    <div className="h-screen  bg-[#5fbcf3] text-white">
+      <div>
        <Header/>
       <Hero/></div>
-      <Artworks artworks={nfts} />
+      <Artworks/>
       <Footer/>
       {/* <Alert/> */}
       <Loading/>

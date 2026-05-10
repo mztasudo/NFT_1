@@ -4,22 +4,20 @@ import { useGlobalState, truncate } from "../store"
 const Header = () => {
   const [connectedAccount] = useGlobalState("connectedAccount")
   return (
-    <nav className="w-4/5 flex justify-between md:justify-center
+    <nav className="w-4/5 flex justify-between md:justify-evenly
     items-center  py-4 mx-auto ">
       
     
 
     <div className="flex flex-row justify-start items-center
     md:flex-[0.5] flex-initial">
-    <img className="w-3 cursor-pointer" src={ethlogo} alt="logo" />
-    <span className="text-white text-2xl ml-3">ETI</span>
+    <h1 className="text-yellow-900 text-3xl font-extrabold text-center">ETI arts
+      <br/>
+      <span className="text-gradient">NFT</span> COLLECTION</h1>
     </div>
     <ul className="md:flex md:flex-{0.5} text-white hidden 
     list-none flex-row justify-between items-center flex-initial">
-    <li className="mx-4 cursor-pointer">Explore</li>
-    <li className="mx-4 cursor-pointer">Features</li>
-    <li className="mx-4 cursor-pointer">Community</li>
-
+    
     
     </ul>
      {connectedAccount ? (

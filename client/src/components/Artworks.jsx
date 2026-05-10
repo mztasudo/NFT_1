@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react'
 const BASE_URI = `https://images.cointelegraph.com/images/1434_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjEtMDYvNGE4NmNmOWQtODM2Mi00YmVhLThiMzctZDEyODAxNjUxZTE1LmpwZWc=.jpg`
 
 
-const Artworks = ({ artworks }) => {
+const Artworks = () => {
+  const [artworks] = useGlobalState('nfts')
+
  const [end, setEnd] = useState(4)
  const [count] = useState(4)
 
@@ -42,13 +44,13 @@ const Artworks = ({ artworks }) => {
                  label-gradient p-2 w-full text-white text-sm"
              >
                <p>
-                 {`Adulam NFT #${nft.id}`}
+                 {`MIKE NFT #${nft.id}`}
                </p>
                <div className="flex justify-center items-center space-x-2">
                  <img
                    className="w-5 cursor-pointer"
                    src={ethlogo}
-                   alt={`Adulam NFT collection #` + nft.id}
+                   alt={`MIKE NFT collection #` + nft.id}
                  />
                  {nft.cost}
                </div>

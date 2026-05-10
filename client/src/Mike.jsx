@@ -86,6 +86,7 @@ const payToMint = async () => {
     console.log("Wallet should pop now 👆")
 
     await tx.wait()
+    alert("MINTED")
 
     await loadNfts()
   } catch (error) {
@@ -96,25 +97,46 @@ const loadNfts = async () => {
   try {
     const contract = await getEthereumContract()
     const nfts = await contract.getAllNFTs()
+    const structured = await structuredNfts(nfts) //new
 
-    setGlobalState('nfts', structuredNfts(nfts))
-    console.log(structuredNfts(nfts))
+    setGlobalState('nfts', structured)
+    console.log(structured)
   } catch (error) {
     reportError(error)
   }
 }
 
-const structuredNfts = (nfts) =>
-  nfts
-    .map((nft) => ({
-      id: Number(nft.id),
-      url: opensea_uri + nft.id,
-      buyer: nft.buyer,
-      imageURL: nft.imageURL,
-      cost: Number(nft.cost) / 1e18,
-      timestamp: Number(nft.timestamp),
-    }))
-    .reverse()
+// const structuredNfts = (nfts) =>
+//   nfts
+//     .map((nft) => ({
+//       id: Number(nft.id),
+//       url: opensea_uri + nft.id,
+//       buyer: nft.buyer,
+//       imageURL: nft.imageURL,
+//       cost: Number(nft.cost) / 1e18,
+//       timestamp: Number(nft.timestamp),
+//     }))
+//     .reverse()
+
+const structuredNfts = async (nfts) => {
+  const items = await Promise.all(
+    nfts.map(async (nft) => {
+      const metadata = await fetch(nft.imageURL).then((res) => res.json())
+
+      return {
+        id: Number(nft.id),
+        url: opensea_uri + nft.id,
+        buyer: nft.buyer,
+        imageURL: metadata.image,
+        cost: ethers.formatEther(nft.cost),
+        timestamp: Number(nft.timestamp),
+
+      }
+    })
+  )
+
+  return items.reverse()
+}
 
 export {
   isWalletConnected,

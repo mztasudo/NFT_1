@@ -38,53 +38,45 @@ const [nfts] = useGlobalState('nfts')
     <div className="flex flex-col justify-center
       items-center mx-auto py-10">
 
-    <h1 className="text-yellow-900 text-3xl font-extrabold text-center">ETI arts
-      <br/>
-      <span className="text-gradient">NFT</span> COLLECTION</h1>
-      <p className="text-white font-semibold text-sm ml-3">
-        Mint and Collect the hottest NFTs around</p>
+    
+      <p className="text-black font-semibold text-3xl ml-3">
+        Click On Mint and Collect the Hottest NFTs Around</p>
       <button className="shadow-xl shadow-black p-2 cursor-pointer my-4
-       text-white bg-[#220894] hover:bg-[#ea5d1b] rounded-2xl "
+       text-white bg-[#1996fd] hover:bg-[#ea5d1b] rounded-2xl "
        onClick={onMintNFT}
        >
         MINT NOW
         </button>
       <a
        className="flex justify-center items-center
-       space-x-2 bg-[#000000ad] rounded-full my-4 pr-3 cursor-pointer"
-       href="www.outsidein.com" target='_blank'
+       space-x-2 bg-[#000000ad] rounded-full  pr-3 cursor-pointer"
+       href="www.houtsidein.com" target='_blank'
        >
-        <img className='w-11 h-11 object-contain rounded-full' src={avatar} alt="o" />
-        <div className='flex flex-col font-semibold text-white'>
-          <span>wallet id</span>
-          <span className='text-[#8aba36]'>damilola</span>
-        </div>
+        
       </a>
-      <p className='text-white text-sm font-medium text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>Cupiditate quos delectus debitis dolorem laudantium omnis? <br/>Maiores facilis nostrum perferendis cupiditate minus eius, 
-      <br/>ab saepe ullam esse earum fugiat harum iure? <br/>
-      Quisquam, dolore dolorum unde necessitatibus
-      </p>
+      
       <ul className='flex flex-row justify-center
       space-x-2 items-center my-4'>
+        
 
         <a href="#" className='bg-white rounded-full'>
           <img className= 'hover:scale-50 w-7 h-7' src={github} alt="Github" />
         </a>
         
         <a href="#" className='bg-white rounded-full'>
-          <img className= 'hover:scale-50 w-7 h-7' src={twitter} alt="Github" />
+          <img className= 'hover:scale-50 w-7 h-7' src={twitter} alt="twitter" />
         </a>
 
         <a href="#" className='bg-white rounded-full'>
-          <img className= 'hover:scale-50 w-7 h-7' src={facebook} alt="Github" />
+          <img className= 'hover:scale-50 w-7 h-7' src={facebook} alt="facebook" />
         </a>
 
         <a href="#" className='bg-white rounded-full'>
-          <img className= 'hover:scale-50 w-7 h-7' src={linkedIn} alt="Github" />
+          <img className= 'hover:scale-50 w-7 h-7' src={linkedIn} alt="linkedin" />
         </a>
 
         <a href="#" className='bg-white rounded-full'>
-          <img className= 'hover:scale-50 w-7 h-7' src={medium} alt="Github" />
+          <img className= 'hover:scale-50 w-7 h-7' src={medium} alt="medium" />
         </a>
 
       </ul>
@@ -94,7 +86,7 @@ const [nfts] = useGlobalState('nfts')
         p-3 ml-4 text-black hover:bg-[#ed255f]
         hover:text-white transition-all duration-75 delay-75'>
 
-        <span className='text-sm font-bold'>{nfts.length}/99</span>
+        <span className='text-sm font-bold bg-slate-400'>{nfts.length}/99</span>
         </div>
       </div>
     </div>
