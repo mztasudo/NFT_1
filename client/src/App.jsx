@@ -7,7 +7,7 @@ import Artworks from "./components/Artworks"
 import Footer from "./components/Footer"
 // import Alert from "./components/Alert"
 import Loading from "./components/Loading"
-import { useGlobalState } from './store'
+import { useGlobalState, setGlobalState } from './store'
 
 
 function App() {
@@ -21,6 +21,23 @@ function App() {
   const [nfts] = useGlobalState('nfts')
 
   useEffect(() => {
+    if (window.ethereum) {
+
+    window.ethereum.on("accountsChanged", async (accounts) => {
+      const account = accounts[0]
+
+      console.log("Switched account:", account)
+
+      // update wallet state
+      setGlobalState('connectedAccount', account)
+      // reload NFTs for new wallet
+      await loadNfts(account)
+    })
+
+    window.ethereum.on("chainChanged", () => {
+      window.location.reload()
+    })
+  }
   const init = async () => {
     try {
       await isWalletConnected()

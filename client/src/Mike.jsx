@@ -96,7 +96,7 @@ const payToMint = async () => {
 const loadNfts = async () => {
   try {
     const contract = await getEthereumContract()
-    const nfts = await contract.getAllNFTs()
+    const nfts = await contract.getMyNFTs()
     const structured = await structuredNfts(nfts) //new
 
     setGlobalState('nfts', structured)
