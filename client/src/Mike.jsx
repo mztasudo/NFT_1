@@ -101,6 +101,7 @@ const loadNfts = async () => {
 
     setGlobalState('nfts', structured)
     console.log(structured)
+    console.log("NFTS:", nfts)
   } catch (error) {
     reportError(error)
   }

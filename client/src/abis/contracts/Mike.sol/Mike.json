@@ -246,7 +246,7 @@
     },
     {
       "inputs": [],
-      "name": "getAllNFTs",
+      "name": "getMyNFTs",
       "outputs": [
         {
           "components": [

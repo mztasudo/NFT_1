@@ -31,7 +31,7 @@ function App() {
       // update wallet state
       setGlobalState('connectedAccount', account)
       // reload NFTs for new wallet
-      await loadNfts(account)
+      await loadNfts()
     })
 
     window.ethereum.on("chainChanged", () => {
