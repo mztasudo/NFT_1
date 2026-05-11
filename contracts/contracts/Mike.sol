@@ -43,8 +43,10 @@ constructor(
 function payToMint() public payable {
     uint256 supply = totalSupply();
     require(!paused, "NFTs under maintenance!");
-    require(supply <= maxSupply, "Sorry, all NFTs have been minted!");
+    require(supply < maxSupply, "Sorry, all NFTs have been minted!");
     require(msg.value > 0 ether, "Ether too low for minting!");
+
+    
 
     if (msg.sender != owner()) {
         require(msg.value >= cost);
@@ -62,7 +64,7 @@ function payToMint() public payable {
         )
     );
       
-    emit Sale(supply, msg.sender, msg.value, tokenURI(supply + 1), block.timestamp);
+    emit Sale(supply + 1, msg.sender, msg.value, tokenURI(supply + 1), block.timestamp);
 
 }
 function toImage(uint256 tokenId) internal view returns (string memory) {
@@ -87,6 +89,33 @@ function tokenURI(uint256 tokenId)
     return bytes(currentBaseURI).length > 0
         ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), baseExtension))
         : "";
+}
+
+function getMyNFTs() public view returns (SaleStruct[] memory) {
+    uint total = minted.length;
+    uint itemCount = 0;
+
+    // Count NFTs owned by sender
+    for (uint i = 0; i < total; i++) {
+        if (minted[i].buyer == msg.sender) {
+            itemCount++;
+        }
+    }
+
+    // Create filtered array
+    SaleStruct[] memory items = new SaleStruct[](itemCount);
+
+    uint currentIndex = 0;
+
+    // Fill filtered array
+    for (uint i = 0; i < total; i++) {
+        if (minted[i].buyer == msg.sender) {
+            items[currentIndex] = minted[i];
+            currentIndex++;
+        }
+    }
+
+    return items;
 }
 function getAllNFTs() public view returns (SaleStruct[] memory) {
     return minted;
