@@ -9,10 +9,14 @@ module.exports = {
     localhost: {
       url: "http://127.0.0.1:8545"
     },
-   sepolia: {
-  url: process.env.ENDPOINT_URL,
-  accounts: [process.env.DEPLOYER_KEY]
-  }
+   arc: {
+  url: process.env.ARC_RPC_URL,
+  accounts: [process.env.DEPLOYER_KEY],
+  chainId: 5042002,
+  gas: 3000000,
+  gasPrice: 20000000000,
+  timeout: 120000
+}
   },
   solidity: {
     version: '0.8.24',
